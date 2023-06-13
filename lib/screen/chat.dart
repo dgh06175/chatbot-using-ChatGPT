@@ -1,5 +1,5 @@
-import '../chat/chat_model.dart';
 import 'package:flutter/material.dart';
+import '../chat/chat_model.dart';
 
 class ChatMessageWidget extends StatelessWidget {
   const ChatMessageWidget(
@@ -25,7 +25,7 @@ class ChatMessageWidget extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
                     child: Image.asset(
-                      'assets/chatgpt.png',
+                      'picture/chatgpt.png',
                       color: Colors.white,
                       scale: 1.5,
                     ),
