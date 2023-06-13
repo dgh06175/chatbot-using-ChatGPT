@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../chat/chat_model.dart';
 import '../server/chat_gpt.dart';
 import '../util/color.dart';
-import 'chat.dart';
+import 'chat_message.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({super.key, required this.relationText});
