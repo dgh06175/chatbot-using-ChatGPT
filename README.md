@@ -4,13 +4,11 @@ chatBot project using chatGPT API
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+OpenAI의 GPT-3.5-turbo 모델을 사용한 챗봇 어플리케이션 입니다.
 
-A few resources to get you started if this is your first Flutter project:
+lib/util/keys.dart에
+```
+const String MY_API_KEY = '{본인의 API key}';
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+와 같이 본인의 openai API KEY를 작성해야 합니다.
