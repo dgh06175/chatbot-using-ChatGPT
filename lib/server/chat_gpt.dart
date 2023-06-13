@@ -16,8 +16,15 @@ Future<String> sendMessageToChatGPT(String message) async {
     body: json.encode({
       "model": "gpt-3.5-turbo",
       "messages": [
-        {"role": "user", "content": message}
+        {
+          "role": "system",
+          "content":
+              "You are a robot that recommends what User should reply to text messages from someone. use korean."
+        },
+        {"role": "user", "content": message},
+        {"role": "assistant", "content": "유저는 여자친구 에게 메세지를 받았어."}
       ],
+      // "temperature": "2",
     }),
   );
   // Do something with the response
