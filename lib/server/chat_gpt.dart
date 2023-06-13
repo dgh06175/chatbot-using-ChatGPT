@@ -4,7 +4,7 @@ import 'dart:convert';
 
 Future<String> sendMessageToChatGPT(String message, String relationText) async {
   const String systemContent =
-      "You are a robot that recommends what User should reply to text messages from someone. use korean.";
+      "You are a robot that recommends what User should reply to text messages from someone. Make it clear what to send the message rather than how to explain the answer. It's okay to have negative results. use korean.";
   String assistantContent = "유저는 $relationText에게 문자를 받았어.";
 
   var url = Uri.https("api.openai.com", "/v1/chat/completions");
@@ -24,7 +24,6 @@ Future<String> sendMessageToChatGPT(String message, String relationText) async {
         {"role": "user", "content": message},
         {"role": "assistant", "content": assistantContent}
       ],
-      // "temperature": "2",
     }),
   );
   // Do something with the response
