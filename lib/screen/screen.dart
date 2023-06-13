@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../chat/chat_model.dart';
 import '../server/chat_gpt.dart';
+import '../util/color.dart';
 import 'chat.dart';
 
 class ChatPage extends StatefulWidget {

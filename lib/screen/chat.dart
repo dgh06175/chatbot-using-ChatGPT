@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../chat/chat_model.dart';
+import '../util/color.dart';
 
 class ChatMessageWidget extends StatelessWidget {
   const ChatMessageWidget(
@@ -64,9 +65,4 @@ class ChatMessageWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class ColorSets {
-  static const backgroundColor = Color(0xff656565);
-  static const botBackgroundColor = Color(0xff404040);
 }
