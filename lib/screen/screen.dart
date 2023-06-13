@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-
 import '../chat/chat_model.dart';
 import '../server/chat_gpt.dart';
 import '../util/color.dart';
 import 'chat.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+  ChatPage({super.key, required this.relationText});
+  String relationText = "";
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<ChatPage> createState() => _ChatPageState(relationText: relationText);
 }
 
 class _ChatPageState extends State<ChatPage> {
+  _ChatPageState({required this.relationText});
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
   final List<ChatMessage> _messages = [];
   late bool isLoading;
+  String relationText = ".";
 
   @override
   void initState() {
@@ -29,10 +31,10 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        title: const Padding(
+        title: Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            "메세지 답장 챗봇",
+            "메시지 대상 : " + relationText,
             maxLines: 2,
             textAlign: TextAlign.center,
           ),
@@ -96,7 +98,7 @@ class _ChatPageState extends State<ChatPage> {
             _textController.clear();
             Future.delayed(const Duration(milliseconds: 50))
                 .then((_) => _scrollDown());
-            sendMessageToChatGPT(input).then((value) {
+            sendMessageToChatGPT(input, relationText).then((value) {
               setState(() {
                 isLoading = false;
                 _messages.add(
