@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screen.dart';
+import 'chat_screen.dart';
 import '../util/color.dart';
 
 class MyHomePage extends StatefulWidget {
