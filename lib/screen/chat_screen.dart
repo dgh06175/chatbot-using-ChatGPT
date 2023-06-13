@@ -34,7 +34,7 @@ class _ChatPageState extends State<ChatPage> {
         title: Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            "메시지 대상 : " + relationText,
+            "연락 대상 : " + relationText,
             maxLines: 2,
             textAlign: TextAlign.center,
           ),
@@ -45,6 +45,15 @@ class _ChatPageState extends State<ChatPage> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 10),
+            Text(
+              relationText + "에게 어떤 문자가 왔는지 알려주세요.",
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.grey[400],
+              ),
+            ),
             Expanded(
               child: _buildList(),
             ),
