@@ -10,7 +10,7 @@ environment:
   sdk: '>=3.0.2 <4.0.0'
 
 dependencies:
-  http: ^0.13.4
+  http: ^0.13.5
   flutter:
     sdk: flutter
 
@@ -35,7 +35,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  assets:
+    - picture/chatgpt.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -54,7 +55,7 @@ flutter:
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
+  # "family" keys.dart with the font family name, and a "fonts" keys.dart with a
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
