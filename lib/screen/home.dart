@@ -10,7 +10,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController inputTextEditingController = TextEditingController();
   String inputText = '';
+  clearSearchBox() {
+    inputTextEditingController.clear();
+    setState(() {
+      inputText = '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +42,38 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 '메세지를 보낸 사람과의 관계를 알려주세요.',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  _showInputDialog(context);
-                },
-                child: Text('문자열 입력'),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(32.0, 0.0, 32.0, 0.0),
+                child: TextField(
+                  controller: inputTextEditingController,
+                  autofocus: true,
+                  cursorColor: Colors.white,
+                  cursorHeight: 24.0,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        clearSearchBox();
+                      },
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  onSubmitted: (text) {
+                    clearSearchBox();
+                    setState(() {
+                      inputText = text;
+                    });
+                  },
+                ),
               ),
               SizedBox(height: 20),
               Text(
@@ -67,32 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-    );
-  }
-
-  void _showInputDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('문자열 입력'),
-          content: TextField(
-            onChanged: (value) {
-              setState(() {
-                inputText = value;
-              });
-            },
-          ),
-          actions: <Widget>[
-            ElevatedButton(
-              child: Text('확인'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
