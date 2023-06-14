@@ -5,6 +5,7 @@ chatBot project using chatGPT API
 ## Getting Started
 
 OpenAI의 GPT-3.5-turbo 모델을 사용한 챗봇 어플리케이션 입니다.
+사용자가 특정 대상에게 받은 문자를 분석하여 적절한 답장 내용을 알려줍니다.
 
 lib/util/keys.dart에
 ```dart
