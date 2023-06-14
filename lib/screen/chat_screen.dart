@@ -30,13 +30,27 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         title: Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text(
-            "연락 대상 : " + relationText,
-            maxLines: 2,
-            textAlign: TextAlign.center,
+          child: Column(
+            children: [
+              Text(
+                relationText,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              Text(
+                relationText + "에게 어떤 문자가 왔는지 알려주세요.",
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey[400],
+                  fontSize: 12,
+                ),
+              ),
+            ],
           ),
         ),
         backgroundColor: ColorSets.botBackgroundColor,
@@ -45,15 +59,6 @@ class _ChatPageState extends State<ChatPage> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 10),
-            Text(
-              relationText + "에게 어떤 문자가 왔는지 알려주세요.",
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey[400],
-              ),
-            ),
             Expanded(
               child: _buildList(),
             ),
@@ -87,9 +92,10 @@ class _ChatPageState extends State<ChatPage> {
       child: Container(
         color: ColorSets.botBackgroundColor,
         child: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.send_rounded,
-            color: Color.fromRGBO(142, 142, 160, 1),
+            color: ColorSets.pointColor,
+            //color: Color.fromRGBO(142, 142, 160, 1),
           ),
           onPressed: () async {
             setState(
@@ -133,7 +139,7 @@ class _ChatPageState extends State<ChatPage> {
         textCapitalization: TextCapitalization.sentences,
         style: const TextStyle(color: Colors.white),
         controller: _textController,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           fillColor: ColorSets.botBackgroundColor,
           filled: true,
           border: InputBorder.none,

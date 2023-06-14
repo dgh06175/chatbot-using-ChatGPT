@@ -19,10 +19,11 @@ class ChatMessageWidget extends StatelessWidget {
           : ColorSets.backgroundColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          chatMessageType == ChatMessageType.bot
-              ? Container(
-                  margin: const EdgeInsets.only(right: 16.0),
+        children: chatMessageType == ChatMessageType.bot
+            // AI의 대사일 경우
+            ? <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(right: 8.0),
                   child: CircleAvatar(
                     backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
                     child: Image.asset(
@@ -31,9 +32,52 @@ class ChatMessageWidget extends StatelessWidget {
                       scale: 1.5,
                     ),
                   ),
-                )
-              : Container(
-                  margin: const EdgeInsets.only(right: 16.0),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        child: Text(
+                          text,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ]
+            // 유저의 대사일 경우
+            : <Widget>[
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        child: Text(
+                          text,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 8.0),
                   child: const CircleAvatar(
                     backgroundColor: const Color.fromRGBO(70, 70, 70, 1),
                     child: Icon(
@@ -41,27 +85,7 @@ class ChatMessageWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  ),
-                  child: Text(
-                    text,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: Colors.white),
-                  ),
-                ),
               ],
-            ),
-          ),
-        ],
       ),
     );
   }
