@@ -9,9 +9,10 @@ Chatbot_APP은 사용자가 특정 대상에게 받은 메세지를 분석하여
 * 사용자가 누구와 메세지를 주고받고 있는지 입력합니다.
 * 챗봇을 실행하고, 받은 메세지 내용을 입력합니다.
 * GPT-3.5 모델이 메세지를 분석하여 답변을 추천합니다.
-https://youtube.com/shorts/uCA8JbMmlaU?feature=share
+
+
 ## 🎦 작동 영상
-[![ChatBot](https://youtube.com/shorts/uCA8JbMmlaU)]
+[![ChatBot](https://img.youtube.com/vi/uCA8JbMmlaU/0.jpg)](https://youtube.com/shorts/uCA8JbMmlaU?feature=share)
 
 ## 🎮 실행 방법
 lib/util/keys.dart 를 생성하고 다음과 같은 코드를 입력해 줘야 합니다.
