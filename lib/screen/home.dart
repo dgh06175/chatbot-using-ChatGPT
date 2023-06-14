@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         title: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                '메세지를 보낸 사람과의 관계를 알려주세요.',
+                '메세지를 받은 사람과의 관계를 알려주세요.',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
               SizedBox(height: 20),
@@ -56,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.white,
                   ),
                   decoration: InputDecoration(
+                    hintText: '입력 후 엔터',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    filled: true,
+                    fillColor: ColorSets.textFieldbackgroundColor,
                     border: InputBorder.none,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -76,24 +80,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                inputText,
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ChatPage(relationText: inputText);
+              inputText == ""
+                  ? SizedBox(height: 16)
+                  : ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorSets.pointColor),
+                      onPressed: () {
+                        inputText == ""
+                            ? showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                      title: const Text('관계를 입력해주세요.'),
+                                      // content: Text('Of course not!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('OK'),
+                                        ),
+                                      ],
+                                    ))
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return ChatPage(relationText: inputText);
+                                  },
+                                ),
+                              );
                       },
+                      child: Text(
+                        '챗봇 실행 ! (' + inputText + ')',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  );
-                },
-                child: Text('챗봇 실행 !'),
-              ),
             ],
           ),
         ),
